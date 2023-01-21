@@ -1,0 +1,135 @@
+.main {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.main_box {
+  padding: 1rem 1rem;
+  box-shadow: 0.5px 0.5px 0.5px 1px black;
+  top: 1rem;
+  /* width: 50rem; */
+  position: relative;
+  /* align-items: center; */
+  /* justify-content: center; */
+  height: 100%;
+  align-items: flex-start;
+  background: #ffffff;
+  /* flex: none; */
+  /* order: 2; */
+  border-radius: 8px;
+  border: none;
+  /* flex-grow: 1; */
+}
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box_tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3%;
+}
+.send {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  width: 93%;
+  justify-content: space-between;
+}
+.btn_act {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: 15rem;
+  height: 3rem;
+  background: #97144d;
+  border-radius: 8px;
+  border: none;
+}
+.btn_dis {
+  color: Black;
+  display: flex;
+  border: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: 15rem;
+  height: 3rem;
+  border-radius: 8px;
+}
+.img {
+  width: 1rem;
+  height: 1rem;
+}
+.send_btn {
+  display: flex;
+  cursor: pointer;
+}
+.inp {
+  width: 85%;
+  padding-left: 2rem;
+}
+.inp input {
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  outline: none;
+}
+.response {
+  padding: 2rem 2rem;
+  letter-spacing: 2px;
+  text-align: justify;
+}
+
+.question {
+  width: fit-content;
+  padding: 1rem 1rem;
+  background-color: #f9f9f9;
+  color: black;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 1px 1px black;
+  margin-top: 0.5rem;
+}
+.answers {
+  margin-top: 0.5rem;
+  width: fit-content;
+  height: auto;
+  padding: 1rem 1rem;
+  background-color: #97144d;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 1px 1px black;
+}
+.slider {
+  padding: 1rem 1rem;
+  box-shadow: 0.5px 0.5px 0.5px 1px black;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  height: 23rem;
+  overflow-y: auto;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #ffffff;
+  flex: none;
+  order: 2;
+  border-radius: 8px;
+  border: none;
+  flex-grow: 1;
+}
+@media only screen and (min-width: 400px) and (max-width:900px) {
+  .slider {
+    height: 35rem;
+  }
+}
+@media only screen and (max-width:400px) {
+    .slider {
+      height: 50rem;
+    }
+  }
