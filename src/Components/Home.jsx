@@ -104,7 +104,6 @@ export const Home = () => {
               <div
                 className="send_btn"
                 onClick={(e) => {
-                  setDisabled(true);
                   inpVal !== "" && getData(e);
                   document.getElementById("inputText").value = "";
                   setInpVal("");
