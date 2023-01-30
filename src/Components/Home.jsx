@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./Home.css";
 
 export const Home = () => {
   const [inpVal, setInpVal] = useState("");
   const [chat, setChat] = useState(true);
+  const ref = useRef(null);
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState([]);
   const getData = async (e) => {
@@ -40,7 +41,11 @@ export const Home = () => {
         console.log(error);
       });
   };
-
+useEffect(()=>{
+  // ref.current.scrollIntoView({behavior:"smooth", block: "end"})
+  ref.current.scroll();
+  console.log(ref.current)
+},[answers])
   useEffect(() => {
     sessionStorage.setItem("data", "");
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -70,10 +75,10 @@ export const Home = () => {
           <>
             <div className="response">
               {question !== [] ? (
-                <div className="slider">
+                <div className="slider" ref={ref}>
                   {question.map((item, i) => {
                     return (
-                      <div key={item+1}>
+                      <div key={i+1}>
                         <div className="question">{item}</div>
                         <div className="answers">{answers?.[i]}</div>
                       </div>
@@ -108,7 +113,7 @@ export const Home = () => {
                   setInpVal("");
                 }}
               >
-                <img src="paper-plane.png" width="20" height="20" alt="" />
+                <img src="send.png" width="20" height="20" alt="" />
               </div>
             </div>
           </>
