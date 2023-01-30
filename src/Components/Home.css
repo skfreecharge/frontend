@@ -3,10 +3,10 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-    bottom: 3rem;
-    transform: translate(-50%);
-    left: 50%;
-    width: 100%;
+  bottom: 3rem;
+  transform: translate(-50%);
+  left: 50%;
+  width: 100%;
 }
 .main_box {
   display: flex;
@@ -15,7 +15,7 @@
   gap: 1rem;
   align-items: center;
   justify-content: center;
-  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #E2E2E2;
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #e2e2e2;
   top: 1rem;
   position: relative;
   height: auto;
@@ -32,17 +32,9 @@
 .box_tabs {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 80%;
-  /* padding:0 2rem; */
-  gap:3%;
-}
-.send {
-  display: flex;
-  /* position: absolute; */
-  /* bottom: 10px; */
-  width: 80%;
-  justify-content: space-between;
+  justify-content: center;
+  width: 77%;
+  gap:3%
 }
 .btn_act {
   color: white;
@@ -56,6 +48,7 @@
   background: #97144d;
   border-radius: 8px;
   border: none;
+  font-size: 16px;
 }
 .btn_dis {
   color: Black;
@@ -67,11 +60,25 @@
   padding: 1rem;
   width: 10rem;
   height: 3rem;
+  font-size: 16px;
   border-radius: 8px;
 }
 .img {
   width: 1rem;
   height: 1rem;
+}
+.send {
+  display: flex;
+  width: 80%;
+  gap: 3%;
+}
+.send input {
+  width: 82%;
+  font-size: 16px;
+  outline: none;
+  padding: 1rem 0.5rem;
+  border: none;
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #e2e2e2;
 }
 .send_btn {
   display: flex;
@@ -81,18 +88,7 @@
   justify-content: center;
   width: 10%;
   border-radius: 8px;
-  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #E2E2E2;
-
-}
-.inp {
-  width: 85%;
-}
-.inp input {
-  width: 100%;
-  padding: 0.5rem 0.5rem;
-  outline: none;
-  border: none;
-  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #E2E2E2;
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #e2e2e2;
 }
 .response {
   letter-spacing: 2px;
@@ -108,7 +104,7 @@
   color: black;
   border-radius: 10px;
   border: none;
-  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #E2E2E2;
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #e2e2e2;
   margin-top: 0.5rem;
 }
 .answers {
@@ -120,10 +116,10 @@
   color: white;
   border-radius: 10px;
   border: none;
-  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #E2E2E2;
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #e2e2e2;
 }
 .slider {
-  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #E2E2E2;
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #e2e2e2;
   position: relative;
   align-items: center;
   justify-content: center;
@@ -137,40 +133,59 @@
   border-radius: 8px;
   border: none;
   flex-grow: 1;
-  width: 100%;
+  width: 95%;
   padding: 0.5rem 0.5rem;
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width: 900px) {
+  .main_box {
+    width: 70%;
+  }
+  /* .send input {
+    width: 90%;
+  } */
+}
+@media only screen and (max-width: 550px) {
   .main_box{
+    width: 90%;
+  }
+  .btn_act {
+    padding: 0;
+  }
+  .btn_dis {
+    padding: 0;
+  }
+  /* .slider {
+    width: 100%;
+  } */
+  .send input{
     width: 100%;
   }
-  .inp input{
-    width: 90%;
-      }
+  
 }
-@media only screen and (max-width:335px) {
-  img{
+@media only screen and (max-width: 300px) {
+  img {
     width: 50%;
   }
-  .main_box{
+  .main_box {
     width: 100%;
   }
-  .inp input{
-width: 80%;
-  }
-.btn_act{
-  padding: 0;
-}
-.btn_dis{
-  padding: 0;
-}
-
-  .slider{
+  .send input {
     width: 100%;
+    font-size: 8px;
   }
-    
+  .btn_act {
+    padding: 0rem;
+    font-size: 8px
   }
-  .recommend{
-    height:61.5vh ;
+  .btn_dis {
+    padding: 0rem;
+    font-size: 8px
   }
+  /* .slider {
+    width: 100%;
+  } */
+}
+.recommend {
+  height: 61.5vh;
+}

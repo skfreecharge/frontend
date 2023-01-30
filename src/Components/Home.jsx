@@ -85,7 +85,6 @@ export const Home = () => {
               )}
             </div>
             <div className="send">
-              <div className="inp">
                 <input
                   id="inputText"
                   placeholder="type your query here"
@@ -101,7 +100,6 @@ export const Home = () => {
                     setInpVal(e.target.value);
                   }}
                 />
-              </div>
               <div
                 className="send_btn"
                 onClick={(e) => {
