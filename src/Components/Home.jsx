@@ -13,7 +13,7 @@ export const Home = () => {
     setQuestion([...question, inpVal]);
     var getUserData = sessionStorage.getItem("data");
     const data = {
-      "query": getUserData == null ? `${inpVal}` : `${getUserData}${inpVal}`,
+      "query": getUserData === null ? `${inpVal}` : `${getUserData}${inpVal}`,
       "id":"1"
 
     };
@@ -30,7 +30,7 @@ export const Home = () => {
         console.log(response)
         sessionStorage.setItem(
           "data",
-          getUserData == null
+          getUserData === null
             ? `${inpVal}\n\n${response.data.data}\n\n`
             : `${getUserData} ${inpVal}\n\n${response.data.data}\n\n`
         );
@@ -43,6 +43,7 @@ export const Home = () => {
 
   useEffect(() => {
     sessionStorage.setItem("data", "");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.onbeforeunload]);
   return (
     <div className="main">
@@ -90,7 +91,7 @@ export const Home = () => {
                   placeholder="type your query here"
                   type="text"
                   onKeyPress={(e) => {
-                    if (e.key == "Enter") {
+                    if (e.key === "Enter") {
                       inpVal !== "" && getData(e);
                       document.getElementById("inputText").value = "";
                       setInpVal("");
