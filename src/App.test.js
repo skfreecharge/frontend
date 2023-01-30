@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import App from './App';
+import axios from 'axios';
 
 test('renders learn react link', () => {
   const { getByText } = render(

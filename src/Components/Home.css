@@ -1,23 +1,28 @@
 .main {
-  display: grid;
-  grid-template-columns: auto auto auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+    bottom: 3rem;
+    transform: translate(-50%);
+    left: 50%;
+    width: 100%;
 }
 .main_box {
-  padding: 1rem 1rem;
-  box-shadow: 0.5px 0.5px 0.5px 1px black;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #E2E2E2;
   top: 1rem;
-  /* width: 50rem; */
   position: relative;
-  /* align-items: center; */
-  /* justify-content: center; */
-  height: 100%;
-  align-items: flex-start;
+  height: auto;
+  width: 50%;
   background: #ffffff;
-  /* flex: none; */
-  /* order: 2; */
   border-radius: 8px;
   border: none;
-  /* flex-grow: 1; */
 }
 .heading {
   display: flex;
@@ -27,14 +32,16 @@
 .box_tabs {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 3%;
+  justify-content: space-between;
+  width: 80%;
+  /* padding:0 2rem; */
+  gap:3%;
 }
 .send {
   display: flex;
-  position: absolute;
-  bottom: 10px;
-  width: 93%;
+  /* position: absolute; */
+  /* bottom: 10px; */
+  width: 80%;
   justify-content: space-between;
 }
 .btn_act {
@@ -44,7 +51,7 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  width: 15rem;
+  width: 10rem;
   height: 3rem;
   background: #97144d;
   border-radius: 8px;
@@ -58,7 +65,7 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  width: 15rem;
+  width: 10rem;
   height: 3rem;
   border-radius: 8px;
 }
@@ -69,20 +76,29 @@
 .send_btn {
   display: flex;
   cursor: pointer;
+  background-color: #97144d;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+  border-radius: 8px;
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #E2E2E2;
+
 }
 .inp {
   width: 85%;
-  padding-left: 2rem;
 }
 .inp input {
   width: 100%;
   padding: 0.5rem 0.5rem;
   outline: none;
+  border: none;
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #E2E2E2;
 }
 .response {
-  padding: 2rem 2rem;
   letter-spacing: 2px;
   text-align: justify;
+  margin-bottom: 1rem;
+  width: 80%;
 }
 
 .question {
@@ -92,7 +108,7 @@
   color: black;
   border-radius: 10px;
   border: none;
-  box-shadow: 1px 1px black;
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #E2E2E2;
   margin-top: 0.5rem;
 }
 .answers {
@@ -104,11 +120,10 @@
   color: white;
   border-radius: 10px;
   border: none;
-  box-shadow: 1px 1px black;
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #E2E2E2;
 }
 .slider {
-  padding: 1rem 1rem;
-  box-shadow: 0.5px 0.5px 0.5px 1px black;
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #E2E2E2;
   position: relative;
   align-items: center;
   justify-content: center;
@@ -122,14 +137,33 @@
   border-radius: 8px;
   border: none;
   flex-grow: 1;
+  width: 100%;
 }
-@media only screen and (min-width: 400px) and (max-width:900px) {
-  .slider {
-    height: 35rem;
+
+@media only screen and (max-width:900px) {
+  .main_box{
+    width: 100%;
   }
+  .inp input{
+    width: 90%;
+      }
 }
-@media only screen and (max-width:400px) {
-    .slider {
-      height: 50rem;
-    }
+@media only screen and (max-width:335px) {
+  .main_box{
+    width: 100%;
+  }
+  .inp input{
+width: 80%;
+  }
+.btn_act{
+  padding: 0;
+}
+.btn_dis{
+  padding: 0;
+}
+
+  .slider{
+    width: 100%;
+  }
+    
   }

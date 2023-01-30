@@ -1,57 +1,65 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./Home.css"
+import "./Home.css";
 
 export const Home = () => {
-    const [inpVal, setInpVal] = useState("");
-    const [resp, setResp] = useState("");
-    const [disabled, setDisabled] = useState(false);
-    const [chat, setChat]= useState(true);
-    const [question, setQuestion] = useState([]);
-    const [answers, setAnswers] = useState([]);
-    const getData = async(e)=>{
-        e.stopPropagation();
-        e.preventDefault();
-        setQuestion([...question,inpVal])
-        var getUserData= sessionStorage.getItem("data")
-        const data = {
-            "query":getUserData == null ? `${inpVal}`:`${getUserData}${inpVal}`
-        }
-        var config = {
-            method: 'post',
-            url: `http://localhost:8080/ai/send`,
-            headers: { 
-              'Content-Type': 'application/json'
-            },
-            data : data
-          };
-          await axios(config)
-          .then(function (response) {
-            setResp(response.data.data);
-            sessionStorage.setItem("data",getUserData == null ? `${inpVal}\n\n${response.data.data}\n\n`:`${getUserData} ${inpVal}\n\n${response.data.data}\n\n`);
-            setDisabled(false);
-            setAnswers([...answers,response.data.data])
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-}
+  const [inpVal, setInpVal] = useState("");
+  const [resp, setResp] = useState("");
+  const [disabled, setDisabled] = useState(false);
+  const [chat, setChat] = useState(true);
+  const [question, setQuestion] = useState([]);
+  const [answers, setAnswers] = useState([]);
+  const getData = async (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setQuestion([...question, inpVal]);
+    var getUserData = sessionStorage.getItem("data");
+    const data = {
+      "query": getUserData == null ? `${inpVal}` : `${getUserData}${inpVal}`,
+      "id":"1"
 
-useEffect(()=>{
-  sessionStorage.setItem("data","")
-},[window.onbeforeunload])
+    };
+    var config = {
+      method: "post",
+      // url: `http://65.0.12.68:5000/predict`,
+      url: `http://chanakya-poc-1435669675.ap-south-1.elb.amazonaws.com/ai/send`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+    await axios(config)
+      .then(function (response) {
+        console.log(response)
+        setResp(response.data.data);
+        sessionStorage.setItem(
+          "data",
+          getUserData == null
+            ? `${inpVal}\n\n${response.data.data}\n\n`
+            : `${getUserData} ${inpVal}\n\n${response.data.data}\n\n`
+        );
+        setDisabled(false);
+        setAnswers([...answers, response.data.data]);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    sessionStorage.setItem("data", "");
+  }, [window.onbeforeunload]);
   return (
-    <div className='main'>
-      <div></div>
+    <div className="main">
       <div className="main_box">
         <div className="heading">
-          <img src="image.png" alt="" width="100" height="100" />
+          <img src="image.png" alt="" width="80" height="80" />
           <h1>Chanakya</h1>
         </div>
         <div className="box_tabs">
           <button
             onClick={() => setChat(true)}
-            className={chat ?"btn_act" : "btn_dis"}
+            className={chat ? "btn_act" : "btn_dis"}
           >
             Chat
           </button>
@@ -59,68 +67,62 @@ useEffect(()=>{
             onClick={() => setChat(false)}
             className={!chat ? "btn_act" : "btn_dis"}
           >
-            Recomendation
+            Recommendation
           </button>
         </div>
         {chat ? (
-          <div>
-            <div className='response'>
-              {
-              question !== []? 
-              <div className='slider'>
-              {
-                question.map((item,i)=>{
-                  return(
-                    <div>
-                <div className='question'>{item}</div>
-              <div className='answers'>{answers?.[i]}</div>
-              </div>
-                  )
-                })
-              }
-              </div>
-              : "Feel Free to Ask Anything"
-              }</div>
+          <>
+            <div className="response">
+              {question !== [] ? (
+                <div className="slider">
+                  {question.map((item, i) => {
+                    return (
+                      <div key={item+1}>
+                        <div className="question">{item}</div>
+                        <div className="answers">{answers?.[i]}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                "Feel Free to Ask Anything"
+              )}
+            </div>
             <div className="send">
-              <div className='inp'>
-              <input
-              id="inputText"
-                placeholder="type your query here"
-                type="text"
-                onKeyPress={(e)=>{
-                  // setDisabled(true);
-                  if(e.key=="Enter"){
-                    inpVal !=="" && getData(e);
-                    document.getElementById("inputText").value = ""
-                    setInpVal("")
-                  }
-                }}
-                onChange={(e) => {
-                  setInpVal(e.target.value)}
-                }
-
-              />
+              <div className="inp">
+                <input
+                  id="inputText"
+                  placeholder="type your query here"
+                  type="text"
+                  onKeyPress={(e) => {
+                    if (e.key == "Enter") {
+                      inpVal !== "" && getData(e);
+                      document.getElementById("inputText").value = "";
+                      setInpVal("");
+                    }
+                  }}
+                  onChange={(e) => {
+                    setInpVal(e.target.value);
+                  }}
+                />
               </div>
               <div
-              className="send_btn"
+                className="send_btn"
                 onClick={(e) => {
                   setDisabled(true);
-                  inpVal!== "" && getData(e);
-                  document.getElementById("inputText").value = ""
-                  setInpVal("")
+                  inpVal !== "" && getData(e);
+                  document.getElementById("inputText").value = "";
+                  setInpVal("");
                 }}
               >
-                <img src="paper-plane.png" width="30" height="30" alt="" />
+                <img src="paper-plane.png" width="20" height="20" alt="" />
               </div>
             </div>
-          </div>
+          </>
         ) : (
-          <div>
-            Please wait for the Next version!
-          </div>
+          <div>Please wait for the Next version!</div>
         )}
       </div>
-      <div></div>
     </div>
-  )
-}
+  );
+};
