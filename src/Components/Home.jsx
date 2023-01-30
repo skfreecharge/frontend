@@ -4,8 +4,8 @@ import "./Home.css";
 
 export const Home = () => {
   const [inpVal, setInpVal] = useState("");
-  const [resp, setResp] = useState("");
-  const [disabled, setDisabled] = useState(false);
+  // const [resp, setResp] = useState("");
+  // const [disabled, setDisabled] = useState(false);
   const [chat, setChat] = useState(true);
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState([]);
@@ -31,14 +31,14 @@ export const Home = () => {
     await axios(config)
       .then(function (response) {
         console.log(response)
-        setResp(response.data.data);
+        // setResp(response.data.data);
         sessionStorage.setItem(
           "data",
           getUserData == null
             ? `${inpVal}\n\n${response.data.data}\n\n`
             : `${getUserData} ${inpVal}\n\n${response.data.data}\n\n`
         );
-        setDisabled(false);
+        // setDisabled(false);
         setAnswers([...answers, response.data.data]);
       })
       .catch(function (error) {
