@@ -138,6 +138,7 @@
   border: none;
   flex-grow: 1;
   width: 100%;
+  padding: 0.5rem 0.5rem;
 }
 
 @media only screen and (max-width:900px) {
@@ -149,6 +150,9 @@
       }
 }
 @media only screen and (max-width:335px) {
+  img{
+    width: 50%;
+  }
   .main_box{
     width: 100%;
   }
