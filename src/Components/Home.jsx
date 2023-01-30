@@ -115,7 +115,7 @@ export const Home = () => {
             </div>
           </>
         ) : (
-          <div>Please wait for the Next version!</div>
+          <div className="recommend">Please wait for the Next version!</div>
         )}
       </div>
     </div>
