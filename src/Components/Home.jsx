@@ -4,8 +4,6 @@ import "./Home.css";
 
 export const Home = () => {
   const [inpVal, setInpVal] = useState("");
-  // const [resp, setResp] = useState("");
-  // const [disabled, setDisabled] = useState(false);
   const [chat, setChat] = useState(true);
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState([]);
@@ -21,7 +19,6 @@ export const Home = () => {
     };
     var config = {
       method: "post",
-      // url: `http://65.0.12.68:5000/predict`,
       url: `http://chanakya-poc-1435669675.ap-south-1.elb.amazonaws.com/ai/send`,
       headers: {
         "Content-Type": "application/json",
@@ -31,14 +28,12 @@ export const Home = () => {
     await axios(config)
       .then(function (response) {
         console.log(response)
-        // setResp(response.data.data);
         sessionStorage.setItem(
           "data",
           getUserData == null
             ? `${inpVal}\n\n${response.data.data}\n\n`
             : `${getUserData} ${inpVal}\n\n${response.data.data}\n\n`
         );
-        // setDisabled(false);
         setAnswers([...answers, response.data.data]);
       })
       .catch(function (error) {
