@@ -149,17 +149,19 @@
   .main_box{
     width: 90%;
   }
+  .send_btn{
+    width: 15%;
+  }
   .btn_act {
     padding: 0;
+    font-size: 12px;
   }
   .btn_dis {
     padding: 0;
+    font-size: 12px;
   }
-  /* .slider {
-    width: 100%;
-  } */
   .send input{
-    width: 100%;
+    width: 90%;
   }
   
 }
@@ -171,8 +173,11 @@
     width: 100%;
   }
   .send input {
-    width: 100%;
+    width: 90%;
     font-size: 8px;
+  }
+  .send_btn{
+    width: 20%;
   }
   .btn_act {
     padding: 0rem;
