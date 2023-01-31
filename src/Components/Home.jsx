@@ -8,15 +8,18 @@ export const Home = () => {
   const ref = useRef(null);
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState([]);
+  const [newmsg, setNewmsg] = useState(false);
+  const [icon, setIcon] = useState(false);
+  const [loading, setLoading] = useState(".");
+  let len = [];
   const getData = async (e) => {
     e.stopPropagation();
     e.preventDefault();
     setQuestion([...question, inpVal]);
     var getUserData = sessionStorage.getItem("data");
     const data = {
-      "query": getUserData === null ? `${inpVal}` : `${getUserData}${inpVal}`,
-      "id":"1"
-
+      query: getUserData === null ? `${inpVal}` : `${getUserData}${inpVal}`,
+      id: "1",
     };
     var config = {
       method: "post",
@@ -28,7 +31,7 @@ export const Home = () => {
     };
     await axios(config)
       .then(function (response) {
-        console.log(response)
+        console.log(response);
         sessionStorage.setItem(
           "data",
           getUserData === null
@@ -36,20 +39,38 @@ export const Home = () => {
             : `${getUserData} ${inpVal}\n\n${response.data.data}\n\n`
         );
         setAnswers([...answers, response.data.data]);
+        len.push(response.data.data);
       })
       .catch(function (error) {
         console.log(error);
       });
   };
-useEffect(()=>{
-  // ref.current.scrollIntoView({behavior:"smooth", block: "end"})
-  ref.current.scroll();
-  console.log(ref.current)
-},[answers])
+  const newmsgLength = () => {
+    answers.length > len.length && setNewmsg(true);
+  };
+  const scrollH = () => {
+    chat &&
+      ref.current.scrollHeight > ref.current.clientHeight &&
+      setIcon(true);
+  };
+  useEffect(() => {
+    ref.current.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "auto",
+    });
+    // console.log(ref.current.pageYOffset)
+  }, [question]);
   useEffect(() => {
     sessionStorage.setItem("data", "");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.onbeforeunload]);
+  useEffect(() => {
+    newmsgLength();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [answers]);
+  useEffect(() => {
+    scrollH();
+  });
   return (
     <div className="main">
       <div className="main_box">
@@ -78,9 +99,19 @@ useEffect(()=>{
                 <div className="slider" ref={ref}>
                   {question.map((item, i) => {
                     return (
-                      <div key={i+1}>
+                      <div key={i + 1}>
                         <div className="question">{item}</div>
-                        <div className="answers">{answers?.[i]}</div>
+                        {answers?.[i] ? (
+                          <div className="answers">{answers?.[i]}</div>
+                        ) : (
+                          <div className="loading">
+                            {setInterval(() => {
+                              loading.length > 5
+                                ? setLoading(".")
+                                : setLoading(loading + ".");
+                            }, 1000) && loading}
+                          </div>
+                        )}
                       </div>
                     );
                   })}
@@ -88,29 +119,61 @@ useEffect(()=>{
               ) : (
                 "Feel Free to Ask Anything"
               )}
+              {icon ? (
+                newmsg ? (
+                  <div
+                    className="newmsg"
+                    onClick={() => {
+                      setNewmsg(false);
+                      ref.current.scrollTo({
+                        top: document.documentElement.scrollHeight,
+                        behavior: "auto",
+                      });
+                    }}
+                  >
+                    <img src="iconsnew.png" height="30" width="30" alt="" />
+                  </div>
+                ) : (
+                  <div
+                    className="oldmsg"
+                    onClick={() => {
+                      ref.current.scrollTo({
+                        top: document.documentElement.scrollHeight,
+                        behavior: "auto",
+                      });
+                    }}
+                  >
+                    <img src="icons.png" height="30" width="30" alt="" />
+                  </div>
+                )
+              ) : (
+                <></>
+              )}
             </div>
             <div className="send">
-                <input
-                  id="inputText"
-                  placeholder="type your query here"
-                  type="text"
-                  onKeyPress={(e) => {
-                    if (e.key === "Enter") {
-                      inpVal !== "" && getData(e);
-                      document.getElementById("inputText").value = "";
-                      setInpVal("");
-                    }
-                  }}
-                  onChange={(e) => {
-                    setInpVal(e.target.value);
-                  }}
-                />
+              <input
+                id="inputText"
+                placeholder="type your query here"
+                type="text"
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    inpVal !== "" && getData(e);
+                    document.getElementById("inputText").value = "";
+                    setInpVal("");
+                    setLoading(".");
+                  }
+                }}
+                onChange={(e) => {
+                  setInpVal(e.target.value);
+                }}
+              />
               <div
                 className="send_btn"
                 onClick={(e) => {
                   inpVal !== "" && getData(e);
                   document.getElementById("inputText").value = "";
                   setInpVal("");
+                  setLoading(".");
                 }}
               >
                 <img src="send.png" width="20" height="20" alt="" />
