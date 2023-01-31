@@ -18,9 +18,13 @@ export const Home = () => {
     setQuestion([...question, inpVal]);
     var getUserData = sessionStorage.getItem("data");
     const data = {
-      query: getUserData === null ? `${inpVal}` : `${getUserData}${inpVal}`,
+      query: `${inpVal}`,
       id: "1",
     };
+    // const data = {
+    //   query: getUserData === null ? `${inpVal}` : `${getUserData}${inpVal}`,
+    //   id: "1",
+    // };
     var config = {
       method: "post",
       url: `http://chanakya-poc-1435669675.ap-south-1.elb.amazonaws.com/ai/send`,
@@ -31,7 +35,6 @@ export const Home = () => {
     };
     await axios(config)
       .then(function (response) {
-        console.log(response);
         sessionStorage.setItem(
           "data",
           getUserData === null
@@ -58,7 +61,7 @@ export const Home = () => {
       top: document.documentElement.scrollHeight,
       behavior: "auto",
     });
-    // console.log(ref.current.pageYOffset)
+    setNewmsg(false);
   }, [question]);
   useEffect(() => {
     sessionStorage.setItem("data", "");
@@ -137,6 +140,7 @@ export const Home = () => {
                   <div
                     className="oldmsg"
                     onClick={() => {
+                      setNewmsg(false);
                       ref.current.scrollTo({
                         top: document.documentElement.scrollHeight,
                         behavior: "auto",
