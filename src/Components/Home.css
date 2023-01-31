@@ -164,6 +164,15 @@
   .send input{
     width: 90%;
   }
+  .answers{
+    font-size: medium;
+  }
+  .question{
+    font-size: medium;
+  }
+  .heading h1{
+    font-size: 22px;
+  }
   
 }
 @media only screen and (max-width: 300px) {
@@ -187,6 +196,15 @@
   .btn_dis {
     padding: 0rem;
     font-size: 8px
+  }
+  .question{
+    font-size: small;
+  }
+  .answers{
+    font-size: small;
+  }
+  .heading h1{
+    font-size: medium;
   }
   /* .slider {
     width: 100%;
