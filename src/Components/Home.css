@@ -154,6 +154,10 @@
     width: 100%;
     height: 100vh;
   }
+  .box_tabs {
+    position: sticky;
+    top: 0;
+  }
   .main {
     width: 100%;
     height: 100vh;
@@ -192,6 +196,8 @@
   }
   .heading h1 {
     font-size: 22px;
+    position: sticky;
+    top: 0;
   }
 }
 /* @media only screen and (max-width: 300px) {
