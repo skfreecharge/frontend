@@ -151,7 +151,24 @@
 }
 @media only screen and (max-width: 550px) {
   .main_box {
-    width: 90%;
+    width: 100%;
+    height: 100vh;
+  }
+  .main {
+    width: 100%;
+    height: 100vh;
+  }
+  .slider {
+    width: 95%;
+    height: 63vh;
+  }
+  .response {
+    width: 100%;
+  }
+  .send {
+    width: 100%;
+    bottom: -35px;
+    position: fixed;
   }
   .send_btn {
     width: 15%;
@@ -165,7 +182,7 @@
     font-size: 12px;
   }
   .send input {
-    width: 90%;
+    width: 100%;
   }
   .answers {
     font-size: 12px;
@@ -177,7 +194,7 @@
     font-size: 22px;
   }
 }
-@media only screen and (max-width: 300px) {
+/* @media only screen and (max-width: 300px) {
   img {
     width: 50%;
   }
@@ -208,10 +225,10 @@
   .heading h1 {
     font-size: medium;
   }
-  /* .slider {
+  .slider {
     width: 100%;
-  } */
-}
+  }
+} */
 .recommend {
   height: 61.5vh;
 }
