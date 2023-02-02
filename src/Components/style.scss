@@ -1,0 +1,41 @@
+$dot-width: 0.3rem;
+$dot-color: #ffffff;
+$speed: 1.5s;
+.typing {
+  position: relative;
+  span {
+    content: "";
+    animation: blink $speed infinite;
+    animation-fill-mode: both;
+    height: $dot-width;
+    width: $dot-width;
+    background: $dot-color;
+    position: absolute;
+    left: 0.1rem;
+    top: 0.3rem;
+    border-radius: 100%;
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+      margin-left: $dot-width * 1.5;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.4s;
+      margin-left: $dot-width * 3;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.6s;
+      margin-left: $dot-width * 4.5;
+    }
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0.1;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
