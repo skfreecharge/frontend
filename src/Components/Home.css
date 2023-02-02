@@ -372,10 +372,14 @@
   border-radius: 2rem;
   height: 2.7rem;
   top: 0.3rem;
+  z-index: 5;
   left: -0.3rem;
 }
 @media only screen and (max-width: 400px) {
   .mobView_send_btn img {
     width: 15px;
+  }
+  .mobView_send_btn {
+    width: 12%;
   }
 }
