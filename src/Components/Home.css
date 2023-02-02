@@ -369,7 +369,7 @@
   align-items: center;
   justify-content: center;
   width: 8%;
-  border-radius: 2rem;
+  border-radius: 50%;
   height: 2.7rem;
   top: 0.3rem;
   z-index: 5;
@@ -378,8 +378,5 @@
 @media only screen and (max-width: 400px) {
   .mobView_send_btn img {
     width: 15px;
-  }
-  .mobView_send_btn {
-    width: 12%;
   }
 }
