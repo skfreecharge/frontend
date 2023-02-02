@@ -309,11 +309,16 @@
   width: 100%;
   top: 3.3rem;
   padding: 1rem 1rem;
+  background-image: url("../../public/axis.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: auto;
 }
 .mobView_slider {
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 78.5vh;
   overflow-y: auto;
   width: 98%;
 }
@@ -325,9 +330,9 @@
   justify-content: flex-end;
 }
 .mobView_question {
-  width: fit-content;
+  width: auto;
   padding: 0.7rem 0.7rem;
-  background-color: #d9d6d6;
+  background-color: #edebeb;
   color: black;
   border-radius: 10px;
   border: none;
@@ -377,7 +382,7 @@
   background-color: #97144d;
   align-items: center;
   justify-content: center;
-  width: 8%;
+  width: 10%;
   border-radius: 50%;
   height: 2.7rem;
   /* top: 0.3rem; */
@@ -389,10 +394,10 @@
     width: 15px;
   }
   .mobView_send_btn {
-    width: 12%;
+    width: 13%;
   }
   .mobView_footer input {
-    width: 74%;
+    width: 70%;
   }
   .mobView_header {
     justify-content: center;
