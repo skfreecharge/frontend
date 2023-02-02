@@ -11,9 +11,10 @@ export const Home = () => {
   const [answers, setAnswers] = useState([]);
   const [newmsg, setNewmsg] = useState(false);
   const [icon, setIcon] = useState(false);
-  const [loading, setLoading] = useState(".");
   const [mobView, setMobView] = useState(false);
   const [screenSize, getDimension] = useState(window.innerWidth);
+  // const [scrollHeight, getScrollHeight] = useState(ref.current?.scrollTop);
+  // const [THeight, getTHeight] = useState(ref.current?.scrollHeight);
   let len = [];
   const getData = async (e) => {
     e.stopPropagation();
@@ -51,15 +52,9 @@ export const Home = () => {
         console.log(error);
       });
   };
-  const newmsgLength = () => {
-    answers.length > len.length && setNewmsg(true);
-  };
-  const scrollH = () => {
-    chat &&
-      !mobView &&
-      ref.current.scrollHeight > ref.current.clientHeight &&
-      setIcon(true);
-  };
+  // const newmsgLength = () => {
+  //   answers.length > len.length && setNewmsg(true);
+  // };
   useEffect(() => {
     ref.current.scrollTo({
       top: document.documentElement.scrollHeight,
@@ -71,13 +66,10 @@ export const Home = () => {
     sessionStorage.setItem("data", "");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.onbeforeunload]);
-  useEffect(() => {
-    newmsgLength();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [answers]);
-  useEffect(() => {
-    scrollH();
-  });
+  // useEffect(() => {
+  //   newmsgLength();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [answers]);
   const setDimension = () => {
     getDimension(window.innerWidth);
   };
@@ -88,6 +80,29 @@ export const Home = () => {
       window.removeEventListener("resize", setDimension);
     };
   }, [screenSize]);
+  // const setHeight = () => {
+  //   getScrollHeight(ref.current?.scrollTop);
+  // };
+  // useEffect(() => {
+  //   window.addEventListener("scroll", setHeight);
+  //   return () => {
+  //     window.removeEventListener("scroll", setHeight);
+  //   };
+  // });
+  // const setTHeight = () => {
+  //   getTHeight(ref.current?.scrollHeight);
+  // };
+  // useEffect(() => {
+  //   window.addEventListener("total", setTHeight);
+  //   return () => {
+  //     window.removeEventListener("total", setTHeight);
+  //   };
+  // });
+  // useEffect(() => {
+  //   THeight > scrollHeight + ref.current?.clientHeight
+  //     ? setIcon(true)
+  //     : setIcon(false);
+  // });
   return (
     <>
       {mobView ? ( //mobile
@@ -127,6 +142,39 @@ export const Home = () => {
             ) : (
               "Feel Free to Ask Anything"
             )}
+            {icon ? (
+              newmsg ? (
+                <div
+                  className="newmsg"
+                  onClick={() => {
+                    setNewmsg(false);
+                    setIcon(false);
+                    ref.current.scrollTo({
+                      top: document.documentElement.scrollHeight,
+                      behavior: "auto",
+                    });
+                  }}
+                >
+                  <img src="iconsnew.png" height="30" width="30" alt="" />
+                </div>
+              ) : (
+                <div
+                  className="oldmsg"
+                  onClick={() => {
+                    setNewmsg(false);
+                    setIcon(false);
+                    ref.current.scrollTo({
+                      top: document.documentElement.scrollHeight,
+                      behavior: "auto",
+                    });
+                  }}
+                >
+                  <img src="icons.png" height="30" width="30" alt="" />
+                </div>
+              )
+            ) : (
+              <></>
+            )}
           </div>
           <div className="mobView_footer">
             <input
@@ -138,7 +186,6 @@ export const Home = () => {
                   inpVal !== "" && getData(e);
                   document.getElementById("inputText").value = "";
                   setInpVal("");
-                  setLoading(".");
                   ref.current.scrollTo({
                     top: document.documentElement.scrollHeight,
                     behavior: "auto",
@@ -156,7 +203,6 @@ export const Home = () => {
                 inpVal !== "" && getData(e);
                 document.getElementById("inputText").value = "";
                 setInpVal("");
-                setLoading(".");
               }}
             >
               <img src="send.png" width="100" height="30" alt="" />
@@ -198,11 +244,7 @@ export const Home = () => {
                               <div className="answers">{answers?.[i]}</div>
                             ) : (
                               <div className="loading">
-                                {setInterval(() => {
-                                  loading.length > 5
-                                    ? setLoading(".")
-                                    : setLoading(loading + ".");
-                                }, 1000) && loading}
+                                <Typing />
                               </div>
                             )}
                           </div>
@@ -256,7 +298,6 @@ export const Home = () => {
                         inpVal !== "" && getData(e);
                         document.getElementById("inputText").value = "";
                         setInpVal("");
-                        setLoading(".");
                         ref.current.scrollTo({
                           top: document.documentElement.scrollHeight,
                           behavior: "auto",
@@ -274,7 +315,6 @@ export const Home = () => {
                       inpVal !== "" && getData(e);
                       document.getElementById("inputText").value = "";
                       setInpVal("");
-                      setLoading(".");
                     }}
                   >
                     <img src="send.png" width="20" height="20" alt="" />

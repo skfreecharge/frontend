@@ -245,6 +245,7 @@
   margin: 0.5rem;
   bottom: 0;
   right: 0;
+  z-index: 5;
 }
 .newmsg img {
   animation-name: newmsg;
@@ -267,6 +268,7 @@
   margin: 0.5rem;
   bottom: 0;
   right: 0;
+  z-index: 5;
 }
 .loading {
   margin-top: 0.5rem;
@@ -302,6 +304,11 @@
   position: relative;
   color: white;
   font-size: 1.8rem;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.32px;
 }
 .mobView_container {
   position: relative;
@@ -313,7 +320,8 @@
   align-items: center;
   justify-content: center;
   height: 78.5vh;
-  overflow-y: auto;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
   width: 98%;
 }
 .mobView_slider::-webkit-scrollbar {
@@ -333,6 +341,11 @@
   margin-top: 0.5rem;
   font-size: 14px;
   text-align: justify;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.32px;
 }
 .mobView_answers {
   margin-top: 0.5rem;
@@ -345,6 +358,11 @@
   border: none;
   font-size: 14px;
   text-align: justify;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.32px;
 }
 .mobView_footer {
   position: fixed;
@@ -363,7 +381,6 @@
   width: 78%;
   padding: 1rem 1rem;
   border: none;
-  /* left: 0.6rem; */
   position: relative;
   border-radius: 2rem;
   height: 0.7rem;
