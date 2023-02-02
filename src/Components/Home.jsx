@@ -102,13 +102,15 @@ export const Home = () => {
                 {question.map((item, i) => {
                   return (
                     <>
-                      <div
-                        className="mobView_question"
-                        align="right"
-                        key={i + 1}
-                      >
-                        {item}
-                      </div>
+                      <span className="mobView_question_main">
+                        <div
+                          className="mobView_question"
+                          align="right"
+                          key={i + 1}
+                        >
+                          {item}
+                        </div>
+                      </span>
                       {answers?.[i] ? (
                         <div className="mobView_answers" key={item + i}>
                           {answers?.[i]}
