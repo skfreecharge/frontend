@@ -46,7 +46,7 @@
   padding: 1rem;
   width: 10rem;
   height: 3rem;
-  background: #97144d;
+  background: #ed1164;
   border-radius: 8px;
   border: none;
   font-size: 16px;
@@ -84,7 +84,7 @@
 .send_btn {
   display: flex;
   cursor: pointer;
-  background-color: #97144d;
+  background-color: #ed1164;
   align-items: center;
   justify-content: center;
   width: 10%;
@@ -114,7 +114,7 @@
   width: fit-content;
   height: auto;
   padding: 0.7rem 0.7rem;
-  background-color: #97144d;
+  background-color: #ed1164;
   color: white;
   border-radius: 10px;
   border: none;
@@ -275,7 +275,7 @@
   width: 3rem;
   height: 0.8rem;
   padding: 0.7rem 0.7rem;
-  background-color: #97144d;
+  background-color: #ed1164;
   color: white;
   border-radius: 10px;
   border: none;
@@ -289,7 +289,7 @@
   top: 0;
   height: 4.3rem;
   width: 100%;
-  background-color: #97144d;
+  background-color: #ed1164;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -352,7 +352,7 @@
   width: fit-content;
   height: auto;
   padding: 0.7rem 0.7rem;
-  background-color: #97144d;
+  background-color: #ed1164;
   color: white;
   border-radius: 10px;
   border: none;
@@ -390,7 +390,7 @@
   display: flex;
   position: relative;
   cursor: pointer;
-  background-color: #97144d;
+  background-color: #ed1164;
   align-items: center;
   justify-content: center;
   width: 10%;
