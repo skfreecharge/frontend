@@ -291,17 +291,16 @@
   z-index: 2;
   display: flex;
   align-items: center;
-  gap: 3%;
+  gap: 3.5%;
 }
 .mobView_header img {
   position: relative;
-  left: 1.4rem;
+  left: 0.4rem;
   border-radius: 2rem;
 }
 .mobView_header h1 {
   position: relative;
   color: white;
-  left: 1rem;
   font-size: 1.8rem;
 }
 .mobView_container {
@@ -309,11 +308,6 @@
   width: 100%;
   top: 3.3rem;
   padding: 1rem 1rem;
-  background-image: url("../../public/axis.png");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: auto;
 }
 .mobView_slider {
   align-items: center;
@@ -385,27 +379,21 @@
   width: 10%;
   border-radius: 50%;
   height: 2.7rem;
-  /* top: 0.3rem; */
   z-index: 5;
-  /* left: -0.3rem; */
+}
+.mobView_send_btn img {
+  width: 25px;
+  left: 0.2rem;
+  position: relative;
 }
 @media only screen and (max-width: 380px) {
   .mobView_send_btn img {
-    width: 15px;
+    left: 0.1rem;
   }
   .mobView_send_btn {
     width: 13%;
   }
   .mobView_footer input {
     width: 70%;
-  }
-  .mobView_header {
-    justify-content: center;
-  }
-  .mobView_header img {
-    left: 0;
-  }
-  .mobView_header h1 {
-    left: 0;
   }
 }

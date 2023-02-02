@@ -93,7 +93,7 @@ export const Home = () => {
       {mobView ? ( //mobile
         <div style={{ display: "flex" }}>
           <div className="mobView_header">
-            <img src="image.png" alt="" width="50" height="50" />
+            <img src="image.png" alt="" width="45" height="45" />
             <h1>Chanakya</h1>
           </div>
           <div className="mobView_container">
@@ -159,7 +159,7 @@ export const Home = () => {
                 setLoading(".");
               }}
             >
-              <img src="send.png" width="20" height="20" alt="" />
+              <img src="send.png" width="100" height="30" alt="" />
             </div>
           </div>
         </div>
