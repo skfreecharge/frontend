@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import "./Home.css";
+import "./back.css";
 import { Typing } from "./Typing";
 
 export const Home = () => {
@@ -13,6 +13,7 @@ export const Home = () => {
   const [icon, setIcon] = useState(false);
   const [mobView, setMobView] = useState(false);
   const [screenSize, getDimension] = useState(window.innerWidth);
+  const [icontext, setIContext] = useState([]);
   // const [scrollHeight, getScrollHeight] = useState(ref.current?.scrollTop);
   // const [THeight, getTHeight] = useState(ref.current?.scrollHeight);
   let len = [];
@@ -20,14 +21,19 @@ export const Home = () => {
     e.stopPropagation();
     e.preventDefault();
     setQuestion([...question, inpVal]);
-    var getUserData = sessionStorage.getItem("data");
+    // var getUserData = sessionStorage.getItem("data");
     // const data = {
     //   query: `${inpVal}`,
     //   id: "1",
     // };
+    // const data = {
+    //   query: getUserData === null ? `${inpVal}` : `${getUserData}${inpVal}`,
+    //   id: "1",
+    // };
     const data = {
-      query: getUserData === null ? `${inpVal}` : `${getUserData}${inpVal}`,
-      id: "1",
+      query: `${inpVal}`,
+      // context: getUserData ? `${getUserData}` : "",
+      context: icontext
     };
     var config = {
       method: "post",
@@ -37,13 +43,16 @@ export const Home = () => {
       },
       data: data,
     };
+    console.log(config);
     await axios(config)
       .then(function (response) {
+        let res = response ? response.data.data : "";
+        !res.includes("I don't know.") && setIContext([...icontext, response.data.data]);
         sessionStorage.setItem(
           "data",
-          getUserData === null
-            ? ` ${inpVal} \n\n ${response.data.data} \n\n `
-            : ` ${getUserData} ${inpVal} \n\n ${response.data.data} \n\n `
+          !res.includes("Sorry, I cannot answer.")
+            ? `${response.data.data} \n\n `
+            : ""
         );
         setAnswers([...answers, response.data.data]);
         len.push(response.data.data);
