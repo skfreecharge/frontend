@@ -5,7 +5,7 @@ import { Typing } from "./Typing";
 
 export const Home = () => {
   const [inpVal, setInpVal] = useState("");
-  const [chat, setChat] = useState(true);
+  // const [chat, setChat] = useState(true);
   const ref = useRef(null);
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState([]);
